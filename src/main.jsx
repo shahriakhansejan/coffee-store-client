@@ -12,34 +12,41 @@ import SignIn from './Pages/Login/SignIn.jsx';
 import SignUp from './Pages/Login/SignUp.jsx';
 import AuthProvider from './provider/AuthProvider.jsx';
 import Home from './Pages/Home/Home.jsx';
+import Root from './root/Root.jsx';
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App></App>,
-    loader: () => fetch('https://coffee-store-server-bwiq27eq3-shahria-khan-sejans-projects.vercel.app/coffee')
-  },
-  {
-    path: "/addCoffee",
-    element: <AddCoffee></AddCoffee>
-  },
-  {
-    path: "/updateCoffee/:id",
-    element: <UpdateCoffee></UpdateCoffee>,
-    loader: ({params}) => fetch(`https://coffee-store-server-bwiq27eq3-shahria-khan-sejans-projects.vercel.app/coffee/${params.id}`) 
-  },
-  {
-    path: '/signin',
-    element: <SignIn></SignIn>
-  },
-  {
-    path: '/signup',
-    element: <SignUp></SignUp>
-  },
-  {
-    path: '/users',
-    element: <Home></Home>,
-    loader: () => fetch('https://coffee-store-server-31r0r5bee-shahria-khan-sejans-projects.vercel.app')
+    path: '/',
+    element: <Root></Root>,
+    children: [
+      {
+        path: "/",
+        element: <App></App>,
+        loader: () => fetch('https://coffee-store-server-six-teal.vercel.app/coffee')
+      },
+      {
+        path: "/addCoffee",
+        element: <AddCoffee></AddCoffee>
+      },
+      {
+        path: "/updateCoffee/:id",
+        element: <UpdateCoffee></UpdateCoffee>,
+        loader: ({params}) => fetch(`https://coffee-store-server-six-teal.vercel.app/coffee/${params.id}`) 
+      },
+      {
+        path: '/signin',
+        element: <SignIn></SignIn>
+      },
+      {
+        path: '/signup',
+        element: <SignUp></SignUp>
+      },
+      {
+        path: '/users',
+        element: <Home></Home>,
+        loader: () => fetch('https://coffee-store-server-six-teal.vercel.app/users')
+      }
+    ]
   }
 ]);
 

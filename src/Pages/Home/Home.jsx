@@ -17,7 +17,7 @@ const Home = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://coffee-store-server-31r0r5bee-shahria-khan-sejans-projects.vercel.app/${id}`, {
+                fetch(`https://coffee-store-server-six-teal.vercel.app/users/${id}`, {
                     method: 'DELETE'
                 })
                 .then(res => res.json())
